@@ -1,4 +1,6 @@
 .hero {
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
   position: relative;
   min-height: 100svh;
   display: flex;
@@ -8,9 +10,22 @@
   text-align: center;
   padding-top: 96px;
   overflow: hidden;
-  /* dot-grid */
+  /* base dot-grid (dim) */
   background-image: radial-gradient(rgba(0, 200, 255, 0.12) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+/* bright dot layer revealed under cursor */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 200, 255, 0.75) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle 75px at var(--mouse-x) var(--mouse-y), black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 75px at var(--mouse-x) var(--mouse-y), black 20%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .glow {

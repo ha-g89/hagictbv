@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './Hero.module.css'
 
 const PLAIN = 'Meer uit uw bedrijf halen '
@@ -16,6 +16,18 @@ function nextDelay(i) {
 export default function Hero() {
   const [count, setCount] = useState(0)
   const [done, setDone] = useState(false)
+  const heroRef = useRef(null)
+
+  const handleMouseMove = useCallback((e) => {
+    const rect = heroRef.current.getBoundingClientRect()
+    heroRef.current.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+    heroRef.current.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    heroRef.current.style.setProperty('--mouse-x', '-9999px')
+    heroRef.current.style.setProperty('--mouse-y', '-9999px')
+  }, [])
 
   useEffect(() => {
     if (count >= FULL.length) {
@@ -32,7 +44,12 @@ export default function Hero() {
   const typing = count < FULL.length
 
   return (
-    <section className={styles.hero}>
+    <section
+      className={styles.hero}
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Background glow */}
       <div className={styles.glow} aria-hidden="true" />
 
