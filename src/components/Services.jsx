@@ -1,3 +1,4 @@
+import { useReveal } from '../hooks/useReveal'
 import styles from './Services.module.css'
 
 const aiPoints = [
@@ -10,6 +11,9 @@ const aiPoints = [
 ]
 
 export default function Services() {
+  const [featuredRef, featuredVisible] = useReveal()
+  const [supportRef, supportVisible] = useReveal()
+
   return (
     <section id="diensten" className={styles.section}>
       <div className="container">
@@ -23,7 +27,7 @@ export default function Services() {
         </div>
 
         {/* Featured AI card */}
-        <article className={styles.featured}>
+        <article ref={featuredRef} className={`${styles.featured} reveal ${featuredVisible ? 'visible' : ''}`}>
           <div className={styles.featuredTop}>
             <div className={styles.featuredLeft}>
               <div className={styles.featuredIcon}>
@@ -60,7 +64,7 @@ export default function Services() {
         </article>
 
         {/* Supporting service */}
-        <div className={styles.supporting}>
+        <div ref={supportRef} className={`${styles.supporting} reveal ${supportVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.1s' }}>
           <span className={styles.supportingLabel}>Aanvullend</span>
           <article className={styles.card}>
             <div className={styles.cardIcon}>

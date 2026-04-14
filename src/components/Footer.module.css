@@ -33,6 +33,18 @@
   margin-right: 6px;
 }
 
+.logoCursor {
+  color: var(--color-accent);
+  font-weight: 300;
+  margin-left: 1px;
+  animation: footerBlink 1s step-end infinite;
+}
+
+@keyframes footerBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .tagline {
   font-size: 0.875rem;
   color: var(--color-text-dim);

@@ -1,3 +1,4 @@
+import { useReveal } from '../hooks/useReveal'
 import styles from './About.module.css'
 
 const stats = [
@@ -7,12 +8,15 @@ const stats = [
 ]
 
 export default function About() {
+  const [textRef, textVisible] = useReveal()
+  const [statsRef, statsVisible] = useReveal()
+
   return (
     <section id="over-ons" className={styles.section}>
       <div className="container">
         <div className={styles.inner}>
           {/* Text side */}
-          <div className={styles.text}>
+          <div ref={textRef} className={`${styles.text} reveal ${textVisible ? 'visible' : ''}`}>
             <span className="section-label">Over ons</span>
             <h2 className="section-title">
               Technologie die werkt<br />voor ú
@@ -44,9 +48,13 @@ export default function About() {
           </div>
 
           {/* Stats side */}
-          <div className={styles.stats}>
-            {stats.map((s) => (
-              <div key={s.label} className={styles.statCard}>
+          <div ref={statsRef} className={styles.stats}>
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`${styles.statCard} reveal ${statsVisible ? 'visible' : ''}`}
+                style={{ transitionDelay: `${i * 0.12}s` }}
+              >
                 <span className={styles.statValue}>{s.value}</span>
                 <span className={styles.statLabel}>{s.label}</span>
                 <span className={styles.statDesc}>{s.desc}</span>

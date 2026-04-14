@@ -127,3 +127,15 @@ ul { list-style: none; }
   color: var(--color-accent);
   box-shadow: 0 0 16px rgba(0, 200, 255, 0.1);
 }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
