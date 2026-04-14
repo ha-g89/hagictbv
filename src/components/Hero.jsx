@@ -1,6 +1,36 @@
+import { useState, useEffect } from 'react'
 import styles from './Hero.module.css'
 
+const PLAIN = 'Meer uit uw bedrijf halen '
+const ACCENT = 'met AI'
+const FULL = PLAIN + ACCENT
+
+// Slight variation in typing speed for realism
+function nextDelay(i) {
+  const char = FULL[i] ?? ''
+  if (char === ' ') return 60
+  if (i === PLAIN.length) return 120 // tiny pause before accent
+  return 38 + Math.random() * 30
+}
+
 export default function Hero() {
+  const [count, setCount] = useState(0)
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    if (count >= FULL.length) {
+      // Keep cursor for a beat, then mark done (cursor fades out)
+      const t = setTimeout(() => setDone(true), 900)
+      return () => clearTimeout(t)
+    }
+    const t = setTimeout(() => setCount((c) => c + 1), nextDelay(count))
+    return () => clearTimeout(t)
+  }, [count])
+
+  const plainVisible = PLAIN.slice(0, Math.min(count, PLAIN.length))
+  const accentVisible = ACCENT.slice(0, Math.max(0, count - PLAIN.length))
+  const typing = count < FULL.length
+
   return (
     <section className={styles.hero}>
       {/* Background glow */}
@@ -13,17 +43,27 @@ export default function Hero() {
         </div>
 
         <h1 className={styles.title}>
-          Meer uit uw bedrijf halen{' '}
-          <span className={styles.titleAccent}>met AI</span>
+          <span className={styles.prompt} aria-hidden="true">{'>'}&nbsp;</span>
+          {plainVisible}
+          {accentVisible && (
+            <span className={styles.titleAccent}>{accentVisible}</span>
+          )}
+          <span
+            className={`${styles.cursor} ${done ? styles.cursorDone : ''} ${!typing ? styles.cursorBlink : ''}`}
+            aria-hidden="true"
+          >
+            |
+          </span>
         </h1>
 
-        <p className={styles.subtitle}>
+        <p className={`${styles.subtitle} ${done ? styles.fadeIn : styles.invisible}`}>
           HAG ICT B.V. helpt bedrijven in Utrecht en daarbuiten om AI
           concreet in te zetten — van strategie tot werkende software.
           Geen hype, wel meetbaar resultaat.
         </p>
 
-        <div className={styles.actions}>
+        <div className={`${styles.actions} ${done ? styles.fadeIn : styles.invisible}`}
+             style={{ animationDelay: '0.15s' }}>
           <a href="#contact" className="btn btn-primary">
             Start een gesprek
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -37,7 +77,9 @@ export default function Hero() {
       </div>
 
       {/* Scroll hint */}
-      <div className={styles.scrollHint} aria-hidden="true">
+      <div className={`${styles.scrollHint} ${done ? styles.fadeIn : styles.invisible}`}
+           style={{ animationDelay: '0.3s' }}
+           aria-hidden="true">
         <div className={styles.scrollDot} />
       </div>
     </section>

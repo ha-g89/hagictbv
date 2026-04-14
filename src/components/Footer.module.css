@@ -27,8 +27,10 @@
   color: var(--color-text);
 }
 
-.logoAccent {
+.logoBracket {
   color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.4);
+  margin-right: 6px;
 }
 
 .tagline {

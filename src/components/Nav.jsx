@@ -22,8 +22,8 @@ export default function Nav() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <a href="#" className={styles.logo}>
-          <span className={styles.logoMark}>HAG</span>
-          <span className={styles.logoSub}>ICT</span>
+          <span className={styles.logoBracket}>&lt;/&gt;</span>
+          <span className={styles.logoMark}>HAG ICT</span>
         </a>
 
         {/* Desktop links */}

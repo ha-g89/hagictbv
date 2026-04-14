@@ -8,19 +8,23 @@
   text-align: center;
   padding-top: 96px;
   overflow: hidden;
+  /* dot-grid */
+  background-image: radial-gradient(rgba(0, 200, 255, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 .glow {
   position: absolute;
-  top: -10%;
+  top: -5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 900px;
+  width: 1000px;
   height: 700px;
   background: radial-gradient(
     ellipse at center,
-    rgba(37, 99, 235, 0.09) 0%,
-    transparent 68%
+    rgba(0, 200, 255, 0.13) 0%,
+    rgba(0, 80, 160, 0.06) 40%,
+    transparent 70%
   );
   pointer-events: none;
 }
@@ -38,14 +42,16 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 100px;
+  background: rgba(0, 200, 255, 0.06);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  border-radius: 4px;
   padding: 6px 14px;
-  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   margin-bottom: 28px;
+  letter-spacing: 0.04em;
 }
 
 .badgeDot {
@@ -66,8 +72,60 @@
   margin-bottom: 24px;
 }
 
+.prompt {
+  color: var(--color-accent);
+  opacity: 0.5;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-weight: 400;
+  font-size: 0.7em;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
 .titleAccent {
   color: var(--color-accent);
+  text-shadow: 0 0 40px rgba(0, 200, 255, 0.4);
+}
+
+/* ── Cursor ── */
+.cursor {
+  display: inline-block;
+  color: var(--color-accent);
+  font-weight: 300;
+  margin-left: 2px;
+  vertical-align: baseline;
+}
+
+.cursorBlink {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+.cursorDone {
+  animation: cursorFade 0.4s ease forwards;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes cursorFade {
+  to { opacity: 0; }
+}
+
+/* ── Fade-in for post-type elements ── */
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fadeIn {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .subtitle {

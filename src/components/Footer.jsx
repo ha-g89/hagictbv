@@ -15,8 +15,8 @@ export default function Footer() {
         {/* Brand */}
         <div className={styles.brand}>
           <a href="#" className={styles.logo}>
-            <span>HAG</span>
-            <span className={styles.logoAccent}>ICT</span>
+            <span className={styles.logoBracket}>&lt;/&gt;</span>
+            <span>HAG ICT</span>
           </a>
           <p className={styles.tagline}>
             Slimme software voor moderne bedrijven.

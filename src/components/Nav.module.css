@@ -4,15 +4,18 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 18px 0;
-  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  padding: 16px 0;
+  background: rgba(3, 7, 15, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease, padding 0.3s ease;
 }
 
 .scrolled {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 var(--color-border);
+  background: rgba(3, 7, 15, 0.92);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.5);
   padding: 12px 0;
 }
 
@@ -26,17 +29,20 @@
   display: flex;
   align-items: baseline;
   gap: 2px;
-  font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.03em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.logoBracket {
+  color: var(--color-accent);
+  text-shadow: 0 0 12px rgba(0, 200, 255, 0.5);
+  margin-right: 6px;
 }
 
 .logoMark {
   color: var(--color-text);
-}
-
-.logoSub {
-  color: var(--color-accent);
 }
 
 .links {
@@ -84,7 +90,7 @@
   display: flex;
   flex-direction: column;
   padding: 12px 24px 20px;
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(3, 7, 15, 0.98);
   border-top: 1px solid var(--color-border);
   gap: 4px;
 }

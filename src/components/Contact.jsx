@@ -52,8 +52,8 @@ export default function Contact() {
           <div className={styles.companyCard}>
             <div className={styles.companyHeader}>
               <div className={styles.companyLogo}>
-                <span>HAG</span>
-                <span className={styles.companyLogoSub}>ICT</span>
+                <span className={styles.companyLogoBracket}>&lt;/&gt;</span>
+                <span>HAG ICT</span>
               </div>
               <span className={styles.companyTagline}>
                 Slimme software voor moderne bedrijven
@@ -63,8 +63,8 @@ export default function Contact() {
             <div className={styles.companyFields}>
               <CompanyField label="Bedrijfsnaam" value="HAG ICT B.V." />
               <CompanyField label="Vestigingsplaats" value="Utrecht, Nederland" />
-              <CompanyField label="KVK-nummer" value="—" />
-              <CompanyField label="BTW-nummer" value="—" />
+              <CompanyField label="KVK-nummer" value="93459831" />
+              <CompanyField label="BTW-nummer" value="NL004314348B41" />
             </div>
           </div>
         </div>

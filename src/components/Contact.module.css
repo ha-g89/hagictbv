@@ -32,7 +32,8 @@
 }
 
 .contactItem:hover {
-  border-color: rgba(59, 130, 246, 0.35);
+  border-color: rgba(0, 200, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.05);
 }
 
 .contactIcon {
@@ -93,8 +94,10 @@
   color: var(--color-text);
 }
 
-.companyLogoSub {
+.companyLogoBracket {
   color: var(--color-accent);
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.4);
+  margin-right: 4px;
 }
 
 .companyTagline {

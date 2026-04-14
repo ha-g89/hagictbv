@@ -28,18 +28,21 @@
 .callout {
   margin-top: 24px;
   padding: 20px 24px;
-  background: var(--color-accent-muted);
-  border-left: 3px solid var(--color-accent);
+  background: rgba(0, 200, 255, 0.05);
+  border-left: 2px solid var(--color-accent);
   border-radius: 0 var(--radius) var(--radius) 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  box-shadow: inset 0 0 32px rgba(0, 200, 255, 0.03);
 }
 
 .callout strong {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--color-accent);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  letter-spacing: 0.01em;
 }
 
 .callout span {
@@ -73,7 +76,8 @@
 }
 
 .statCard:hover {
-  border-color: rgba(59, 130, 246, 0.35);
+  border-color: rgba(0, 200, 255, 0.35);
+  box-shadow: 0 0 24px rgba(0, 200, 255, 0.06);
 }
 
 .statValue {
