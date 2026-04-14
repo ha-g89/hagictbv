@@ -36,8 +36,8 @@ export default function Footer() {
         {/* Contact */}
         <div className={styles.contact}>
           <span className={styles.navHeading}>Contact</span>
-          <a href="mailto:info@hag-ict.com" className={styles.navLink}>
-            info@hag-ict.com
+          <a href="mailto:haci.cayci@hag-ict.com" className={styles.navLink}>
+            haci.cayci@hag-ict.com
           </a>
           <span className={styles.navLink} style={{ color: 'var(--color-text-dim)' }}>
             Utrecht, Nederland

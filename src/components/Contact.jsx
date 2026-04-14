@@ -24,8 +24,8 @@ export default function Contact() {
                 </svg>
               }
               label="E-mail"
-              value="info@hag-ict.com"
-              href="mailto:info@hag-ict.com"
+              value="haci.cayci@hag-ict.com"
+              href="mailto:haci.cayci@hag-ict.com"
             />
             <ContactItem
               icon={
