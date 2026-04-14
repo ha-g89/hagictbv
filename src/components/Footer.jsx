@@ -3,6 +3,7 @@ import styles from './Footer.module.css'
 
 const navLinks = [
   { href: '#diensten', label: 'Diensten' },
+  { href: '#werkwijze', label: 'Werkwijze' },
   { href: '#over-ons', label: 'Over ons' },
   { href: '#contact', label: 'Contact' },
 ]

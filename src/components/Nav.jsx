@@ -3,6 +3,7 @@ import styles from './Nav.module.css'
 
 const links = [
   { href: '#diensten', label: 'Diensten' },
+  { href: '#werkwijze', label: 'Werkwijze' },
   { href: '#over-ons', label: 'Over ons' },
   { href: '#contact', label: 'Contact' },
 ]
