@@ -1,0 +1,143 @@
+.section {
+  padding: 100px 0;
+}
+
+.header {
+  margin-bottom: 56px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Contact items ── */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
+}
+
+.contactItem:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+  border-radius: 10px;
+}
+
+.contactLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: 4px;
+}
+
+.contactValue {
+  display: block;
+  font-size: 0.975rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.contactLink:hover {
+  color: var(--color-accent-hover);
+}
+
+/* ── Company card ── */
+.companyCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.companyHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.companyLogo {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.companyLogoSub {
+  color: var(--color-accent);
+}
+
+.companyTagline {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.companyDivider {
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: 24px;
+}
+
+.companyFields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.companyField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.fieldLabel {
+  font-size: 0.825rem;
+  color: var(--color-text-dim);
+  font-weight: 500;
+}
+
+.fieldValue {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: 600;
+  font-family: 'SF Mono', 'Consolas', monospace;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
