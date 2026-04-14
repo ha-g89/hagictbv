@@ -2,6 +2,7 @@ import './index.css'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import AiCapabilities from './components/AiCapabilities'
 import Process from './components/Process'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -14,6 +15,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <AiCapabilities />
         <Process />
         <About />
         <Contact />
