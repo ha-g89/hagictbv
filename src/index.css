@@ -1,39 +1,54 @@
-/* ── CSS Variables ── */
+/* ─── Design tokens ──────────────────────────────────── */
 :root {
-  --color-bg: #03070f;
-  --color-surface: #07111e;
-  --color-surface-2: #0c1a2e;
-  --color-border: #112240;
-  --color-border-bright: #1a3a6a;
-  --color-accent: #00c8ff;
-  --color-accent-hover: #38d9ff;
-  --color-accent-dim: #006080;
-  --color-accent-muted: rgba(0, 200, 255, 0.07);
-  --color-text: #ccd6f6;
-  --color-text-muted: #7a9abf;
-  --color-text-dim: #3d5a7a;
-  --color-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  --radius: 6px;
-  --radius-lg: 10px;
-  --shadow: 0 4px 32px rgba(0, 0, 0, 0.6);
-  --glow-accent: 0 0 24px rgba(0, 200, 255, 0.18);
-  --transition: 0.2s ease;
-  --max-w: 1100px;
+  /* Palette: warm paper + rust signal */
+  --color-bg:                  oklch(97.5% 0.008 75);
+  --color-bg-alt:              oklch(94% 0.012 72);
+  --color-bg-dark:             oklch(12% 0.018 50);
+  --color-surface:             oklch(99.5% 0.003 78);
+  --color-border:              oklch(87% 0.016 74);
+  --color-border-subtle:       oklch(92% 0.01 77);
+  --color-border-strong:       oklch(74% 0.022 70);
+  --color-border-inverse:      oklch(100% 0 0 / 0.11);
+
+  /* Text */
+  --color-text:                oklch(16% 0.014 55);
+  --color-text-muted:          oklch(44% 0.018 55);
+  --color-text-dim:            oklch(63% 0.014 72);
+  --color-text-inverse:        oklch(94% 0.008 74);
+  --color-text-inverse-muted:  oklch(68% 0.014 70);
+
+  /* Accent: rust/vermillion */
+  --color-accent:              oklch(52% 0.22 28);
+  --color-accent-hover:        oklch(57% 0.22 28);
+  --color-accent-subtle:       oklch(96.5% 0.032 30);
+  --color-accent-dark:         oklch(76% 0.16 28);
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body:    'Bricolage Grotesque', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Misc */
+  --radius:          4px;
+  --radius-lg:       8px;
+  --max-w:           1100px;
+  --transition:      0.2s ease;
+  --transition-slow: 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow:          0 2px 20px oklch(16% 0.014 55 / 0.07);
+  --shadow-lg:       0 8px 48px oklch(16% 0.014 55 / 0.11);
 }
 
-/* ── Reset ── */
+/* ─── Reset ──────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.65;
@@ -42,12 +57,10 @@ body {
 }
 
 img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
 
-a { color: inherit; text-decoration: none; }
-
-ul { list-style: none; }
-
-/* ── Layout helpers ── */
+/* ─── Layout ─────────────────────────────────────────── */
 .container {
   width: 100%;
   max-width: var(--max-w);
@@ -55,84 +68,92 @@ ul { list-style: none; }
   padding-inline: 24px;
 }
 
+/* ─── Typography utilities ───────────────────────────── */
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--color-mono);
+  font-family: var(--font-mono);
   font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section-label::before {
-  content: '//';
-  opacity: 0.5;
+  content: '—';
+  opacity: 0.55;
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.2vw, 2.8rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--color-text);
 }
 
 .section-subtitle {
-  margin-top: 14px;
+  margin-top: 16px;
   font-size: 1rem;
   color: var(--color-text-muted);
   max-width: 560px;
   line-height: 1.75;
 }
 
-/* ── Button ── */
+/* ─── Buttons ────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 13px 26px;
   border-radius: var(--radius);
+  font-family: var(--font-body);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition-slow);
   border: none;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
 }
 
 .btn-primary {
   background: var(--color-accent);
-  color: #020c18;
+  color: oklch(99% 0.003 75);
   font-weight: 700;
 }
 
 .btn-primary:hover {
   background: var(--color-accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 0 32px rgba(0, 200, 255, 0.35);
+  box-shadow: 0 8px 28px oklch(52% 0.22 28 / 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--color-text-muted);
-  border: 1px solid var(--color-border-bright);
+  border: 1.5px solid var(--color-border-strong);
 }
 
 .btn-outline:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
-  box-shadow: 0 0 16px rgba(0, 200, 255, 0.1);
 }
 
-/* ── Scroll reveal ── */
+/* ─── Scroll reveal ──────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(28px);
+  transition:
+    opacity  0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {

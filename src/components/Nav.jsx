@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import styles from './Nav.module.css'
 
 const links = [
-  { href: '#diensten', label: 'Diensten' },
-  { href: '#werkwijze', label: 'Werkwijze' },
-  { href: '#over-ons', label: 'Over ons' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#diensten',   label: 'Diensten' },
+  { href: '#werkwijze',  label: 'Werkwijze' },
+  { href: '#over-ons',   label: 'Over ons' },
+  { href: '#contact',    label: 'Contact' },
 ]
 
 export default function Nav() {
@@ -13,21 +13,19 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
     <header className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        {/* Logo */}
         <a href="#" className={styles.logo}>
           <span className={styles.logoBracket}>&lt;/&gt;</span>
           <span className={styles.logoMark}>HAG ICT</span>
         </a>
 
-        {/* Desktop links */}
         <nav className={styles.links}>
           {links.map((l) => (
             <a key={l.href} href={l.href} className={styles.link}>
@@ -39,19 +37,18 @@ export default function Nav() {
           </a>
         </nav>
 
-        {/* Mobile burger */}
         <button
           className={styles.burger}
-          aria-label="Menu openen"
+          aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className={open ? styles.burgerLineTop : ''} />
-          <span className={open ? styles.burgerLineMid : ''} />
-          <span className={open ? styles.burgerLineBot : ''} />
+          <span className={open ? styles.lineTop : ''} />
+          <span className={open ? styles.lineMid : ''} />
+          <span className={open ? styles.lineBot : ''} />
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className={styles.mobileMenu}>
           {links.map((l) => (

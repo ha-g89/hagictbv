@@ -1,196 +1,211 @@
 .section {
-  padding: 100px 0;
+  padding: 120px 0;
+  background: var(--color-bg-alt);
 }
 
+/* ── Header ── */
 .header {
-  margin-bottom: 56px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* ── Featured AI card ── */
+.sectionNum {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+/* ── Featured block ── */
 .featured {
-  background: var(--color-surface);
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-lg);
-  padding: 44px 40px;
-  margin-bottom: 16px;
-  box-shadow: 0 0 60px rgba(0, 200, 255, 0.1), inset 0 0 60px rgba(0, 200, 255, 0.02);
-  position: relative;
-  overflow: hidden;
+  border-top: 1px solid var(--color-border-strong);
+  padding-top: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.featured::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.6), transparent);
+.featuredHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+  align-items: start;
 }
 
-.featuredTop {
-  margin-bottom: 36px;
-}
-
-.featuredLeft {
+.featuredMeta {
   display: flex;
   flex-direction: column;
 }
 
-.featuredIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-  border-radius: var(--radius);
-  margin-bottom: 20px;
-}
-
-.featuredLabel {
-  font-size: 0.7rem;
-  font-weight: 700;
+.featuredTag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .featuredTitle {
-  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-text);
-  margin-bottom: 14px;
-  max-width: 680px;
 }
 
 .featuredDesc {
   font-size: 1rem;
   color: var(--color-text-muted);
-  line-height: 1.75;
-  max-width: 680px;
+  line-height: 1.8;
+  padding-top: 4px;
 }
 
-.featuredGrid {
+/* ── AI sub-points grid ── */
+.pointsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding-top: 32px;
-  border-top: 1px solid var(--color-border);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
 }
 
-.featuredPoint {
+.point {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  flex-direction: column;
+  gap: 4px;
+  padding: 22px 0;
+  border-top: 1px solid var(--color-border-subtle);
 }
 
-.featuredPoint svg {
-  flex-shrink: 0;
-  margin-top: 4px;
-  color: var(--color-accent);
+.point:nth-child(odd) {
+  padding-right: 40px;
+  border-right: 1px solid var(--color-border-subtle);
 }
 
-.featuredPoint strong {
-  display: block;
+.point:nth-child(even) {
+  padding-left: 40px;
+}
+
+.pointTitle {
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 3px;
+  letter-spacing: -0.005em;
 }
 
-.featuredPoint span {
-  font-size: 0.825rem;
+.pointDesc {
+  font-size: 0.85rem;
   color: var(--color-text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* ── Supporting service ── */
 .supporting {
-  margin-top: 32px;
+  padding-top: 48px;
 }
 
-.supportingLabel {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
+.supportingInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.supportingLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.supportingTag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-dim);
   margin-bottom: 12px;
 }
 
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 36px 32px;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-}
-
-.card:hover {
-  border-color: rgba(0, 200, 255, 0.35);
-  box-shadow: 0 0 32px rgba(0, 200, 255, 0.08);
-  transform: translateY(-2px);
-}
-
-.cardIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-  border-radius: var(--radius);
-  margin-bottom: 20px;
-}
-
-.cardTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+.supportingTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: var(--color-text);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-.cardDesc {
+.supportingDesc {
   font-size: 0.95rem;
   color: var(--color-text-muted);
   line-height: 1.75;
-  margin-bottom: 24px;
 }
 
-.cardPoints {
+.supportingPoints {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-border-subtle);
+  align-self: center;
 }
 
-.cardPoint {
+.supportingPoint {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.875rem;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 0.9rem;
   color: var(--color-text-muted);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.cardPoint svg {
-  flex-shrink: 0;
-  margin-top: 2px;
+.supportingPoint:first-child {
+  border-top: none;
+}
+
+.pointDash {
   color: var(--color-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
-@media (max-width: 640px) {
-  .featured {
-    padding: 32px 24px;
-  }
-  .featuredGrid {
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section { padding: 80px 0; }
+
+  .featuredHead {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pointsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .point:nth-child(odd) {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .point:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .supportingInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .supportingPoints {
+    padding-top: 0;
+    border-top: none;
   }
 }

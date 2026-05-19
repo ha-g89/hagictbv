@@ -1,146 +1,169 @@
 .section {
-  padding: 100px 0;
+  padding: 120px 0;
+  background: var(--color-bg);
 }
 
+/* ── Header ── */
 .header {
   margin-bottom: 56px;
 }
 
+/* ── Email hero ── */
+.emailBlock {
+  padding: 40px 0;
+  border-top: 1.5px solid var(--color-border-strong);
+  border-bottom: 1.5px solid var(--color-border-strong);
+  margin-bottom: 64px;
+}
+
+.emailLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: 10px;
+}
+
+.emailLink {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 750;
+  color: var(--color-text);
+  letter-spacing: -0.025em;
+  transition: color var(--transition-slow);
+}
+
+.emailLink:hover {
+  color: var(--color-accent);
+}
+
+/* ── Two-column grid ── */
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 64px;
   align-items: start;
 }
 
-/* ── Contact items ── */
+/* ── Contact rows ── */
 .details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 
-.contactItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 24px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  transition: border-color var(--transition);
+.contactRow {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  align-items: baseline;
 }
 
-.contactItem:hover {
-  border-color: rgba(0, 200, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.05);
+.contactRow:first-child {
+  border-top: 1px solid var(--color-border-subtle);
 }
 
-.contactIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-  border-radius: 10px;
-}
-
-.contactLabel {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+.rowLabel {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-dim);
-  margin-bottom: 4px;
 }
 
-.contactValue {
-  display: block;
-  font-size: 0.975rem;
+.rowValue {
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-text-muted);
 }
 
-.contactLink:hover {
-  color: var(--color-accent-hover);
-}
-
-/* ── Company card ── */
-.companyCard {
-  background: var(--color-surface);
+/* ── Company block ── */
+.companyBlock {
+  padding: 36px;
+  background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 32px;
 }
 
 .companyHeader {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
   margin-bottom: 24px;
 }
 
 .companyLogo {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--color-text);
 }
 
-.companyLogoBracket {
+.companyBracket {
+  font-family: var(--font-mono);
   color: var(--color-accent);
-  text-shadow: 0 0 10px rgba(0, 200, 255, 0.4);
-  margin-right: 4px;
+  margin-right: 6px;
+  font-size: 1.1rem;
 }
 
 .companyTagline {
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
-  font-style: italic;
-}
-
-.companyDivider {
-  height: 1px;
-  background: var(--color-border);
-  margin-bottom: 24px;
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
 }
 
 .companyFields {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0;
 }
 
-.companyField {
+.field {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.field:last-child {
+  border-bottom: none;
 }
 
 .fieldLabel {
-  font-size: 0.825rem;
+  font-size: 0.82rem;
   color: var(--color-text-dim);
-  font-weight: 500;
 }
 
 .fieldValue {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  font-weight: 600;
-  font-family: 'SF Mono', 'Consolas', monospace;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
   letter-spacing: 0.02em;
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
+  .section { padding: 80px 0; }
+
   .grid {
     grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contactRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 }

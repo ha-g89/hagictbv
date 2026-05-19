@@ -1,187 +1,122 @@
 .section {
-  padding: 100px 0;
+  padding: 120px 0;
+  background: var(--color-bg);
 }
 
+/* ── Header ── */
 .header {
-  margin-bottom: 48px;
+  margin-bottom: 72px;
 }
 
-/* ── Spectrum bar ── */
-.spectrum {
-  margin-bottom: 52px;
+/* ── Level group ── */
+.levelGroup {
+  margin-bottom: 0;
 }
 
-.spectrumBar {
-  position: relative;
-  height: 3px;
-  background: var(--color-border);
-  border-radius: 99px;
-  overflow: hidden;
-  margin-bottom: 12px;
+.levelGroup:last-child .entriesGrid {
+  padding-bottom: 0;
 }
 
-.spectrumFill {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    var(--color-accent-dim) 0%,
-    var(--color-accent) 50%,
-    #a78bfa 100%
-  );
-  border-radius: 99px;
-}
-
-.spectrumLabels {
+/* ── Level divider ── */
+.levelDivider {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
+  align-items: center;
+  gap: 20px;
+  padding: 48px 0 36px;
 }
 
-/* ── Grid ── */
-.grid {
+.levelDivider:first-of-type,
+.levelGroup:first-child .levelDivider {
+  padding-top: 0;
+}
+
+.levelLabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.label_automatisering { color: var(--color-text-dim); }
+.label_intelligentie  { color: var(--color-accent); }
+.label_autonomie      { color: var(--color-text-muted); }
+
+.levelLine {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ── Entries grid ── */
+.entriesGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 0;
+  padding-bottom: 0;
 }
 
-/* ── Card ── */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  position: relative;
-  overflow: hidden;
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  border-radius: 99px 0 0 99px;
-  opacity: 0.7;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-}
-
-/* Level-specific left accent & hover */
-.level_automatisering::before {
-  background: var(--color-accent-dim);
-}
-
-.level_automatisering:hover {
-  border-color: rgba(0, 200, 255, 0.3);
-  box-shadow: 0 0 28px rgba(0, 200, 255, 0.07);
-}
-
-.level_intelligentie::before {
-  background: var(--color-accent);
-}
-
-.level_intelligentie:hover {
-  border-color: rgba(0, 200, 255, 0.45);
-  box-shadow: 0 0 28px rgba(0, 200, 255, 0.12);
-}
-
-.level_autonomie::before {
-  background: #a78bfa;
-}
-
-.level_autonomie:hover {
-  border-color: rgba(167, 139, 250, 0.4);
-  box-shadow: 0 0 28px rgba(167, 139, 250, 0.12);
-}
-
-/* ── Card top row ── */
-.cardTop {
+/* ── Single entry ── */
+.entry {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border-subtle);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.iconWrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: var(--color-accent-muted);
+.entry:nth-child(odd) {
+  padding-right: 48px;
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.entry:nth-child(even) {
+  padding-left: 48px;
+}
+
+.entryNum {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   color: var(--color-accent);
-  border-radius: var(--radius);
-  flex-shrink: 0;
+  opacity: 0.6;
 }
 
-.level_autonomie .iconWrap {
-  background: rgba(167, 139, 250, 0.08);
-  color: #a78bfa;
-}
-
-/* ── Badge ── */
-.badge {
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 99px;
-}
-
-.badge_automatisering {
-  background: rgba(0, 96, 128, 0.25);
-  color: var(--color-accent-dim);
-  border: 1px solid rgba(0, 96, 128, 0.4);
-}
-
-.badge_intelligentie {
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-  border: 1px solid rgba(0, 200, 255, 0.2);
-}
-
-.badge_autonomie {
-  background: rgba(167, 139, 250, 0.1);
-  color: #a78bfa;
-  border: 1px solid rgba(167, 139, 250, 0.25);
-}
-
-/* ── Card text ── */
-.cardTitle {
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+.entryTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 750;
   color: var(--color-text);
-  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-.cardDesc {
-  font-size: 0.875rem;
+.entryDesc {
+  font-size: 0.9rem;
   color: var(--color-text-muted);
   line-height: 1.75;
 }
 
 /* ── Responsive ── */
 @media (max-width: 720px) {
-  .grid {
+  .section { padding: 80px 0; }
+
+  .entriesGrid {
     grid-template-columns: 1fr;
   }
 
-  .card {
-    padding: 26px 22px;
+  .entry:nth-child(odd) {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .entry:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .levelDivider {
+    padding-top: 40px;
   }
 }

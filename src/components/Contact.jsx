@@ -2,8 +2,8 @@ import { useReveal } from '../hooks/useReveal'
 import styles from './Contact.module.css'
 
 export default function Contact() {
-  const [detailsRef, detailsVisible] = useReveal()
-  const [cardRef, cardVisible] = useReveal()
+  const [leftRef,  leftVisible]  = useReveal()
+  const [rightRef, rightVisible] = useReveal()
 
   return (
     <section id="contact" className={styles.section}>
@@ -12,66 +12,53 @@ export default function Contact() {
           <span className="section-label">Contact</span>
           <h2 className="section-title">Laten we praten</h2>
           <p className="section-subtitle">
-            Heeft u een idee of een vraag? Neem contact met ons op — wij
-            reageren binnen één werkdag.
+            Heeft u een idee of een vraag? Wij reageren binnen één werkdag.
           </p>
         </div>
 
+        {/* Email hero */}
+        <div className={styles.emailBlock}>
+          <span className={styles.emailLabel}>E-mail</span>
+          <a href="mailto:haci.cayci@hag-ict.com" className={styles.emailLink}>
+            haci.cayci@hag-ict.com
+          </a>
+        </div>
+
+        {/* Two-column details */}
         <div className={styles.grid}>
-          {/* Contact details */}
-          <div ref={detailsRef} className={styles.details}>
-            <ContactItem
-              delay={0} visible={detailsVisible}
-              icon={
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="m22 6-10 7L2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              }
-              label="E-mail"
-              value="haci.cayci@hag-ict.com"
-              href="mailto:haci.cayci@hag-ict.com"
-            />
-            <ContactItem
-              delay={0.12} visible={detailsVisible}
-              icon={
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.41 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              }
+          {/* Contact items */}
+          <div ref={leftRef} className={styles.details}>
+            <ContactRow
+              visible={leftVisible}
+              delay={0}
               label="Telefoon"
-              value="— (binnenkort beschikbaar)"
+              value="Binnenkort beschikbaar"
             />
-            <ContactItem
-              delay={0.24} visible={detailsVisible}
-              icon={
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" strokeWidth="1.5"/>
-                  <circle cx="12" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.5"/>
-                </svg>
-              }
+            <ContactRow
+              visible={leftVisible}
+              delay={0.1}
               label="Locatie"
               value="Utrecht, Nederland"
             />
           </div>
 
-          {/* Company info card */}
-          <div ref={cardRef} className={`${styles.companyCard} reveal ${cardVisible ? 'visible' : ''}`} style={{ transitionDelay: '0.15s' }}>
+          {/* Company card */}
+          <div
+            ref={rightRef}
+            className={`${styles.companyBlock} reveal ${rightVisible ? 'visible' : ''}`}
+            style={{ transitionDelay: '0.12s' }}
+          >
             <div className={styles.companyHeader}>
-              <div className={styles.companyLogo}>
-                <span className={styles.companyLogoBracket}>&lt;/&gt;</span>
-                <span>HAG ICT</span>
-              </div>
-              <span className={styles.companyTagline}>
-                Slimme software voor moderne bedrijven
+              <span className={styles.companyLogo}>
+                <span className={styles.companyBracket}>&lt;/&gt;</span>HAG ICT
               </span>
+              <span className={styles.companyTagline}>Slimme software voor moderne bedrijven</span>
             </div>
-            <div className={styles.companyDivider} />
             <div className={styles.companyFields}>
-              <CompanyField label="Bedrijfsnaam" value="HAG ICT B.V." />
+              <CompanyField label="Bedrijfsnaam"     value="HAG ICT B.V." />
               <CompanyField label="Vestigingsplaats" value="Utrecht, Nederland" />
-              <CompanyField label="KVK-nummer" value="93459831" />
-              <CompanyField label="BTW-nummer" value="NL004314348B41" />
+              <CompanyField label="KVK-nummer"       value="93459831" />
+              <CompanyField label="BTW-nummer"       value="NL004314348B41" />
             </div>
           </div>
         </div>
@@ -80,30 +67,21 @@ export default function Contact() {
   )
 }
 
-function ContactItem({ icon, label, value, href, visible, delay }) {
+function ContactRow({ label, value, visible, delay }) {
   return (
     <div
-      className={`${styles.contactItem} reveal ${visible ? 'visible' : ''}`}
+      className={`${styles.contactRow} reveal ${visible ? 'visible' : ''}`}
       style={{ transitionDelay: `${delay}s` }}
     >
-      <div className={styles.contactIcon}>{icon}</div>
-      <div>
-        <span className={styles.contactLabel}>{label}</span>
-        {href ? (
-          <a href={href} className={styles.contactValue + ' ' + styles.contactLink}>
-            {value}
-          </a>
-        ) : (
-          <span className={styles.contactValue}>{value}</span>
-        )}
-      </div>
+      <span className={styles.rowLabel}>{label}</span>
+      <span className={styles.rowValue}>{value}</span>
     </div>
   )
 }
 
 function CompanyField({ label, value }) {
   return (
-    <div className={styles.companyField}>
+    <div className={styles.field}>
       <span className={styles.fieldLabel}>{label}</span>
       <span className={styles.fieldValue}>{value}</span>
     </div>
