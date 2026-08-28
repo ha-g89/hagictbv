@@ -275,11 +275,7 @@
   border-style: dashed;
   border-color: var(--color-border);
   background: transparent;
-}
-
-.chipObsolete .chipName {
-  text-decoration: line-through;
-  text-decoration-color: var(--color-text-dim);
+  opacity: 0.75;
 }
 
 .chipTag {

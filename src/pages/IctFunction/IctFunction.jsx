@@ -81,7 +81,7 @@ function ReleaseList({ label, title, items }) {
                 <span className={styles.date}>{formatDate(r.date)}</span>
                 {r.supports?.length > 0 && (
                   <div className={styles.supports}>
-                    <span className={styles.supportsLabel}>Facturen</span>
+                    <span className={styles.supportsLabel}>Ondersteunde facturen</span>
                     <ul className={styles.chips}>
                       {r.supports.map((s) => (
                         <li
