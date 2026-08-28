@@ -132,7 +132,9 @@ export default function IctFunction() {
       <header className={styles.top}>
         <div className={`container ${styles.topInner}`}>
           <span className={styles.logo}>
-            <span className={styles.logoBracket}>&lt;/&gt;</span>HAG ICT
+            <span className={styles.logoBracket}>&lt;/&gt;</span>HAG-ICT
+            <span className={styles.logoSep} aria-hidden="true">|</span>
+            <span className={styles.logoClient}>Vellow</span>
           </span>
           <button
             className={styles.logout}
