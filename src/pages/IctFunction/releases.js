@@ -9,7 +9,9 @@
 //              Zonder url wordt DOWNLOAD_BASE + file gebruikt
 //              (bestand in public/downloads/3ictfunction/).
 //   size     — (optioneel) bestandsgrootte als tekst
-//   notes    — lijst met releasenotes
+//   notes    — korte samenvatting (altijd zichtbaar)
+//   releaseNotes — (optioneel) uitklapbare releasenotes,
+//              lijst van { heading, items: [] }
 
 export const DOWNLOAD_BASE = '/downloads/3ictfunction/'
 
@@ -22,6 +24,31 @@ export const software = [
     size: '',
     notes: [
       'Eerste release van de Azure Function.',
+    ],
+    releaseNotes: [
+      {
+        heading: 'Comarch (KPN)',
+        items: [
+          'Factuurregels worden per product verdicht: gelijke omschrijving + stuksprijs worden samengevoegd tot één regel met aantal = som volumes en prijs = echte stuksprijs (AFAS rekent het totaal zelf uit).',
+          'Afwijkende regels (pro-rata bij tussentijds instappen/stoppen, kortingscorrecties) worden bewust níét verdicht maar los doorgezet als 1 × nettobedrag, met eigen periodevermelding. Factuurtotaal blijft daardoor altijd exact gelijk aan het leveranciers-netto.',
+          'Artikelcode wordt nu bepaald op Modulenaam: Internet → ABB_Internet, Vast Bellen → TELEFONIE, Mobiel → ABB_MOBIEL_Abonnementen. Onbekende modulenaam → factuur naar foutbestand (geen ongeldige code meer naar AFAS).',
+          'Gesprekskosten (USAGE) ongewijzigd 1 × totaalnetto per BTW-groep; decimaalnotatie richting AFAS gecorrigeerd (punt i.p.v. komma).',
+        ],
+      },
+      {
+        heading: 'Kubus',
+        items: [
+          'Weergave gelijkgetrokken met Comarch (mail 26-08): omschrijving (vet) = Beschrijving, regel eronder = "Periode: …".',
+          'Productmapping conform Vellow-Artikelen.xlsx: o.a. Telefooncentrale/Porteren/Hardware → TELEFONIE, Gesprekskosten mobiel → ABB_MOBIEL_Belkosten, Gesprekskosten binnenland → ABB_VOIP_Belkosten.',
+        ],
+      },
+      {
+        heading: 'Algemeen',
+        items: [
+          'Nieuwe artikelcode TELEFONIE toegevoegd.',
+          'Verouderde RuleBasedKeywordMapper verwijderd (vervangen door mapping op Modulenaam/Vellow-tabel).',
+        ],
+      },
     ],
   },
 ]

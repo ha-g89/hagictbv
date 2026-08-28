@@ -253,6 +253,79 @@
   white-space: nowrap;
 }
 
+/* ── Releasenotes (uitklapbaar) ── */
+.details {
+  margin-top: 6px;
+}
+
+.summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  user-select: none;
+  transition: color var(--transition);
+}
+
+.summary::-webkit-details-marker { display: none; }
+.summary:hover { color: var(--color-accent-hover); }
+
+.summary svg {
+  transition: transform var(--transition);
+}
+
+.details[open] .summary svg {
+  transform: rotate(180deg);
+}
+
+.rn {
+  margin-top: 16px;
+  padding: 20px 24px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rnHeading {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+
+.rnList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.rnList li {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 8px;
+}
+
+.rnList li::before {
+  content: '—';
+  color: var(--color-accent);
+  opacity: 0.6;
+}
+
 /* ── Footer ── */
 .bottom {
   margin-top: auto;

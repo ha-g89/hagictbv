@@ -80,6 +80,26 @@ function ReleaseList({ label, title, items }) {
                 <span className={styles.file}>
                   {r.file}{r.size ? ` · ${r.size}` : ''}
                 </span>
+                {r.releaseNotes?.length > 0 && (
+                  <details className={styles.details}>
+                    <summary className={styles.summary}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M3 4.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      Releasenotes
+                    </summary>
+                    <div className={styles.rn}>
+                      {r.releaseNotes.map((g) => (
+                        <div key={g.heading} className={styles.rnGroup}>
+                          <h4 className={styles.rnHeading}>{g.heading}</h4>
+                          <ul className={styles.rnList}>
+                            {g.items.map((it) => <li key={it}>{it}</li>)}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                )}
               </div>
               <a
                 href={r.url || DOWNLOAD_BASE + r.file}
