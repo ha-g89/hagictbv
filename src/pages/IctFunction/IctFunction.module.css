@@ -141,7 +141,7 @@
 .logout:hover { color: var(--color-accent); }
 
 .hero {
-  padding: 80px 0 56px;
+  padding: 80px 0 48px;
 }
 
 .title {
@@ -154,8 +154,7 @@
 
 /* ── Release blocks ── */
 .block {
-  padding: 48px 0;
-  border-top: 1.5px solid var(--color-border-strong);
+  padding: 32px 0;
 }
 
 .block:last-of-type {
@@ -163,7 +162,7 @@
 }
 
 .blockHead {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .blockTitle {
@@ -177,64 +176,149 @@
 .empty {
   font-size: 0.92rem;
   color: var(--color-text-dim);
-  padding: 20px 0;
-  border-top: 1px solid var(--color-border-subtle);
-  border-bottom: 1px solid var(--color-border-subtle);
+  padding: 32px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
 }
 
-.list {
+/* ── Card grid ── */
+.grid {
   list-style: none;
-}
-
-.row {
   display: grid;
-  grid-template-columns: 200px 1fr auto;
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  gap: 20px;
   align-items: start;
-  padding: 28px 0;
-  border-top: 1px solid var(--color-border-subtle);
 }
 
-.row:last-child {
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.rowMeta {
+.card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition:
+    border-color var(--transition-slow),
+    box-shadow var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.cardLatest {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow);
+}
+
+.cardLatest:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-lg);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cardLatest .cardHead {
+  background: var(--color-accent-subtle);
+  border-bottom-color: oklch(52% 0.22 28 / 0.2);
+}
+
+.cardVersion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .version {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-text);
 }
 
-.rowLatest .version { color: var(--color-accent); }
+.cardLatest .version { color: var(--color-accent); }
 
 .badge {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
-  padding: 3px 8px;
-  border-radius: var(--radius);
+  color: oklch(99% 0.003 75);
+  background: var(--color-accent);
+  padding: 3px 9px;
+  border-radius: 999px;
 }
 
 .date {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--color-text-dim);
+  white-space: nowrap;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 22px 24px;
+  flex: 1;
+}
+
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-bg);
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.notes li::before {
+  content: '— ';
+  color: var(--color-accent);
+  opacity: 0.6;
+}
+
+.file {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.dl {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 10px 20px !important;
+  font-size: 0.85rem !important;
 }
 
 /* ── Ondersteunde facturen (tegels) ── */
 .supports {
-  margin-top: 4px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -251,7 +335,7 @@
 
 .tiles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 8px;
 }
 
@@ -263,7 +347,7 @@
   row-gap: 2px;
   align-items: center;
   padding: 12px 14px;
-  background: var(--color-surface);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   transition: border-color var(--transition), box-shadow var(--transition);
@@ -320,41 +404,9 @@
   font-weight: 600;
 }
 
-.rowBody {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.notes {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
-  line-height: 1.65;
-}
-
-.notes li::before {
-  content: '— ';
-  color: var(--color-accent);
-  opacity: 0.6;
-}
-
-.file {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--color-text-dim);
-  letter-spacing: 0.02em;
-}
-
-.dl {
-  white-space: nowrap;
-}
-
 /* ── Releasenotes (uitklapbaar) ── */
 .details {
-  margin-top: 6px;
+  margin-top: -4px;
 }
 
 .summary {
@@ -385,14 +437,14 @@
 }
 
 .rn {
-  margin-top: 16px;
-  padding: 20px 24px;
+  margin-top: 14px;
+  padding: 18px 20px;
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .rnHeading {
@@ -440,22 +492,27 @@
 /* ── Responsive ── */
 @media (max-width: 720px) {
   .gateBox { padding: 36px 28px; }
-  .hero    { padding: 56px 0 40px; }
+  .hero    { padding: 56px 0 32px; }
 
-  .row {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .cardHead,
+  .cardBody,
+  .cardFoot {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
-  .rowMeta {
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+  .cardHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .cardFoot {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .dl {
-    width: 100%;
     justify-content: center;
   }
 }

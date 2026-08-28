@@ -62,6 +62,84 @@ function Gate({ onUnlock }) {
   )
 }
 
+function ReleaseCard({ release: r, latest }) {
+  return (
+    <li className={`${styles.card} ${latest ? styles.cardLatest : ''}`}>
+      <div className={styles.cardHead}>
+        <div className={styles.cardVersion}>
+          <span className={styles.version}>v{r.version}</span>
+          {latest && <span className={styles.badge}>Nieuwste</span>}
+        </div>
+        <span className={styles.date}>{formatDate(r.date)}</span>
+      </div>
+
+      <div className={styles.cardBody}>
+        <ul className={styles.notes}>
+          {r.notes.map((n) => <li key={n}>{n}</li>)}
+        </ul>
+
+        {r.supports?.length > 0 && (
+          <div className={styles.supports}>
+            <span className={styles.supportsLabel}>Ondersteunde facturen</span>
+            <ul className={styles.tiles}>
+              {r.supports.map((s) => (
+                <li
+                  key={s.name}
+                  className={`${styles.tile} ${s.obsolete ? styles.tileObsolete : ''}`}
+                >
+                  <span className={styles.tileDot} aria-hidden="true" />
+                  <span className={styles.tileName}>{s.name}</span>
+                  <span className={styles.tileStatus}>
+                    {s.obsolete ? 'Niet meer ondersteund' : 'Ondersteund'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {r.releaseNotes?.length > 0 && (
+          <details className={styles.details}>
+            <summary className={styles.summary}>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 4.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Releasenotes
+            </summary>
+            <div className={styles.rn}>
+              {r.releaseNotes.map((g) => (
+                <div key={g.heading} className={styles.rnGroup}>
+                  <h4 className={styles.rnHeading}>{g.heading}</h4>
+                  <ul className={styles.rnList}>
+                    {g.items.map((it) => <li key={it}>{it}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </details>
+        )}
+      </div>
+
+      <div className={styles.cardFoot}>
+        <span className={styles.file}>
+          {r.file}{r.size ? ` · ${r.size}` : ''}
+        </span>
+        <a
+          href={r.url || DOWNLOAD_BASE + r.file}
+          download={r.file}
+          rel="noopener"
+          className={`btn ${latest ? 'btn-primary' : 'btn-outline'} ${styles.dl}`}
+        >
+          Download
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </li>
+  )
+}
+
 function ReleaseList({ label, title, items }) {
   return (
     <section className={styles.block}>
@@ -72,73 +150,9 @@ function ReleaseList({ label, title, items }) {
       {items.length === 0 ? (
         <p className={styles.empty}>Nog geen releases beschikbaar.</p>
       ) : (
-        <ol className={styles.list}>
+        <ol className={styles.grid}>
           {items.map((r, i) => (
-            <li key={r.version} className={`${styles.row} ${i === 0 ? styles.rowLatest : ''}`}>
-              <div className={styles.rowMeta}>
-                <span className={styles.version}>v{r.version}</span>
-                {i === 0 && <span className={styles.badge}>Nieuwste</span>}
-                <span className={styles.date}>{formatDate(r.date)}</span>
-              </div>
-              <div className={styles.rowBody}>
-                <ul className={styles.notes}>
-                  {r.notes.map((n) => <li key={n}>{n}</li>)}
-                </ul>
-                {r.supports?.length > 0 && (
-                  <div className={styles.supports}>
-                    <span className={styles.supportsLabel}>Ondersteunde facturen</span>
-                    <ul className={styles.tiles}>
-                      {r.supports.map((s) => (
-                        <li
-                          key={s.name}
-                          className={`${styles.tile} ${s.obsolete ? styles.tileObsolete : ''}`}
-                        >
-                          <span className={styles.tileDot} aria-hidden="true" />
-                          <span className={styles.tileName}>{s.name}</span>
-                          <span className={styles.tileStatus}>
-                            {s.obsolete ? 'Niet meer ondersteund' : 'Ondersteund'}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <span className={styles.file}>
-                  {r.file}{r.size ? ` · ${r.size}` : ''}
-                </span>
-                {r.releaseNotes?.length > 0 && (
-                  <details className={styles.details}>
-                    <summary className={styles.summary}>
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                        <path d="M3 4.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      Releasenotes
-                    </summary>
-                    <div className={styles.rn}>
-                      {r.releaseNotes.map((g) => (
-                        <div key={g.heading} className={styles.rnGroup}>
-                          <h4 className={styles.rnHeading}>{g.heading}</h4>
-                          <ul className={styles.rnList}>
-                            {g.items.map((it) => <li key={it}>{it}</li>)}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
-                )}
-              </div>
-              <a
-                href={r.url || DOWNLOAD_BASE + r.file}
-                download={r.file}
-                rel="noopener"
-                className={`btn ${i === 0 ? 'btn-primary' : 'btn-outline'} ${styles.dl}`}
-              >
-                Download
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </li>
+            <ReleaseCard key={r.version} release={r} latest={i === 0} />
           ))}
         </ol>
       )}
