@@ -10,6 +10,8 @@
 //              (bestand in public/downloads/3ictfunction/).
 //   size     — (optioneel) bestandsgrootte als tekst
 //   notes    — korte samenvatting (altijd zichtbaar)
+//   supports — (optioneel) ondersteunde factuurformaten,
+//              lijst van { name, obsolete?: true }
 //   releaseNotes — (optioneel) uitklapbare releasenotes,
 //              lijst van { heading, items: [] }
 
@@ -24,6 +26,11 @@ export const software = [
     size: '',
     notes: [
       'Eerste release van de Azure Function.',
+    ],
+    supports: [
+      { name: 'Comarch (KPN)' },
+      { name: 'Kubus' },
+      { name: 'RoutIT', obsolete: true },
     ],
     releaseNotes: [
       {

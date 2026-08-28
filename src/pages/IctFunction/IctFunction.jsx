@@ -79,6 +79,23 @@ function ReleaseList({ label, title, items }) {
                 <span className={styles.version}>v{r.version}</span>
                 {i === 0 && <span className={styles.badge}>Nieuwste</span>}
                 <span className={styles.date}>{formatDate(r.date)}</span>
+                {r.supports?.length > 0 && (
+                  <div className={styles.supports}>
+                    <span className={styles.supportsLabel}>Facturen</span>
+                    <ul className={styles.chips}>
+                      {r.supports.map((s) => (
+                        <li
+                          key={s.name}
+                          className={`${styles.chip} ${s.obsolete ? styles.chipObsolete : ''}`}
+                          title={s.obsolete ? 'Niet meer ondersteund' : 'Ondersteund'}
+                        >
+                          <span className={styles.chipName}>{s.name}</span>
+                          {s.obsolete && <span className={styles.chipTag}>obsolete</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
               <div className={styles.rowBody}>
                 <ul className={styles.notes}>
