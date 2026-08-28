@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './IctFunction.module.css'
 import { software, documentation, DOWNLOAD_BASE } from './releases'
 import vellowLogo from '../../assets/Vellow-Logo-Zwart-Digitaal.svg'
+import ictLogo from '../../assets/3ict-logo.svg'
 
 // SHA-256-hash van het toegangswachtwoord (het wachtwoord zelf staat niet in de code).
 // Nieuw wachtwoord instellen:
@@ -38,7 +39,11 @@ function Gate({ onUnlock }) {
   return (
     <div className={styles.gate}>
       <form className={styles.gateBox} onSubmit={submit}>
-        <img src={vellowLogo} alt="Vellow" className={styles.gateLogo} />
+        <div className={styles.gateLogos}>
+          <img src={vellowLogo} alt="Vellow" className={styles.gateLogo} />
+          <span className={styles.gateLogoSep} aria-hidden="true" />
+          <img src={ictLogo} alt="3ICT" className={styles.gateLogo} />
+        </div>
         <span className="section-label">Beveiligde omgeving</span>
         <h1 className={styles.gateTitle}>3ICT Azure Function</h1>
         <p className={styles.gateText}>
