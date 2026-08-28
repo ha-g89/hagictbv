@@ -42,7 +42,7 @@ function Gate({ onUnlock }) {
         <div className={styles.gateLogos}>
           <img src={vellowLogo} alt="Vellow" className={styles.gateLogo} />
           <span className={styles.gateLogoSep} aria-hidden="true" />
-          <img src={ictLogo} alt="3ICT" className={styles.gateLogo} />
+          <img src={ictLogo} alt="3ICT" className={styles.gateLogoIct} />
         </div>
         <span className="section-label">Beveiligde omgeving</span>
         <h1 className={styles.gateTitle}>3ICT Azure Function</h1>

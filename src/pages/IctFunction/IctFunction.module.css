@@ -36,9 +36,14 @@
   width: auto;
 }
 
+.gateLogoIct {
+  height: 36px;
+  width: auto;
+}
+
 .gateLogoSep {
   width: 1px;
-  height: 26px;
+  height: 32px;
   background: var(--color-border-strong);
 }
 
