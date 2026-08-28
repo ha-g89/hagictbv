@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './IctFunction.module.css'
 import { software, documentation, DOWNLOAD_BASE } from './releases'
+import vellowLogo from '../../assets/Vellow-Logo-Zwart-Digitaal.svg'
 
 // SHA-256-hash van het toegangswachtwoord (het wachtwoord zelf staat niet in de code).
 // Nieuw wachtwoord instellen:
@@ -37,11 +38,11 @@ function Gate({ onUnlock }) {
   return (
     <div className={styles.gate}>
       <form className={styles.gateBox} onSubmit={submit}>
-        <span className={styles.gateBracket} aria-hidden="true">&lt;/&gt;</span>
+        <img src={vellowLogo} alt="Vellow" className={styles.gateLogo} />
         <span className="section-label">Beveiligde omgeving</span>
         <h1 className={styles.gateTitle}>3ICT Azure Function</h1>
         <p className={styles.gateText}>
-          Voer het wachtwoord in dat u van HAG ICT heeft ontvangen.
+          Voer het wachtwoord in dat u heeft ontvangen.
         </p>
         <label className={styles.label} htmlFor="pw">Wachtwoord</label>
         <input
@@ -171,11 +172,7 @@ export default function IctFunction() {
     <div className={styles.page}>
       <header className={styles.top}>
         <div className={`container ${styles.topInner}`}>
-          <span className={styles.logo}>
-            <span className={styles.logoBracket}>&lt;/&gt;</span>HAG-ICT
-            <span className={styles.logoSep} aria-hidden="true">|</span>
-            <span className={styles.logoClient}>Vellow</span>
-          </span>
+          <img src={vellowLogo} alt="Vellow" className={styles.logo} />
           <button
             className={styles.logout}
             onClick={() => { sessionStorage.removeItem(SESSION_KEY); setUnlocked(false) }}
@@ -202,7 +199,7 @@ export default function IctFunction() {
       <footer className={styles.bottom}>
         <div className="container">
           <span className={styles.copy}>
-            &copy; {new Date().getFullYear()} HAG ICT B.V. — Vertrouwelijk
+            &copy; {new Date().getFullYear()} Vellow — Vertrouwelijk
           </span>
         </div>
       </footer>

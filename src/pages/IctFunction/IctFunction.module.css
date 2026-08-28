@@ -24,12 +24,11 @@
   flex-direction: column;
 }
 
-.gateBracket {
-  font-family: var(--font-mono);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  margin-bottom: 24px;
+.gateLogo {
+  height: 22px;
+  width: auto;
+  align-self: flex-start;
+  margin-bottom: 28px;
 }
 
 .gateTitle {
@@ -103,28 +102,9 @@
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-weight: 750;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-}
-
-.logoBracket {
-  font-family: var(--font-mono);
-  color: var(--color-accent);
-  font-size: 0.95rem;
-  margin-right: 7px;
-}
-
-.logoSep {
-  margin: 0 10px;
-  font-weight: 300;
-  color: var(--color-border-strong);
-}
-
-.logoClient {
-  font-weight: 600;
-  color: var(--color-text-muted);
+  height: 20px;
+  width: auto;
+  display: block;
 }
 
 .logout {
