@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './IctFunction.module.css'
 import { software, documentation, DOWNLOAD_BASE } from './releases'
 import vellowLogo from '../../assets/Vellow-Logo-Zwart-Digitaal.svg'
-import ictLogo from '../../assets/3ict-logo.svg'
+import ictLogo from '../../assets/3ict-logo.jpg'
 
 // SHA-256-hash van het toegangswachtwoord (het wachtwoord zelf staat niet in de code).
 // Nieuw wachtwoord instellen:
