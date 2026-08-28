@@ -82,8 +82,9 @@ function ReleaseList({ label, title, items }) {
                 </span>
               </div>
               <a
-                href={DOWNLOAD_BASE + r.file}
-                download
+                href={r.url || DOWNLOAD_BASE + r.file}
+                download={r.file}
+                rel="noopener"
                 className={`btn ${i === 0 ? 'btn-primary' : 'btn-outline'} ${styles.dl}`}
               >
                 Download
