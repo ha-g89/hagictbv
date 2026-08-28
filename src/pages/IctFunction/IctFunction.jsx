@@ -5,7 +5,7 @@ import { software, documentation, DOWNLOAD_BASE } from './releases'
 // SHA-256-hash van het toegangswachtwoord (het wachtwoord zelf staat niet in de code).
 // Nieuw wachtwoord instellen:
 //   node -e "console.log(require('crypto').createHash('sha256').update('NIEUW-WACHTWOORD').digest('hex'))"
-const ACCESS_HASH = '43198f03fb19b7d9de07dd01493776cc15df0b2922026e3f893a64524df3851a'
+const ACCESS_HASH = '56d6ac1241cf25217369f596eefa9609c6e76b16a5484a4485ab6c5825fb6774'
 const SESSION_KEY = 'ictfunction-auth'
 
 async function sha256(text) {
