@@ -5,11 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background-color: var(--color-bg);
-  background-image:
-    linear-gradient(oklch(87% 0.016 74 / 0.35) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(87% 0.016 74 / 0.35) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background: var(--color-bg);
 }
 
 .gateBox {
