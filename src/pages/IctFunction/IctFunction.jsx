@@ -21,20 +21,38 @@ function formatDate(iso) {
   })
 }
 
+function Loader() {
+  return (
+    <div className={styles.loader} role="status" aria-live="polite">
+      <div className={styles.spinner} aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <span className={styles.loaderText}>Portaal wordt geladen</span>
+    </div>
+  )
+}
+
 function Gate({ onUnlock }) {
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   async function submit(e) {
     e.preventDefault()
+    if (loading) return
     if ((await sha256(value)) === ACCESS_HASH) {
-      sessionStorage.setItem(SESSION_KEY, '1')
-      onUnlock()
+      setLoading(true)
+      setTimeout(() => {
+        sessionStorage.setItem(SESSION_KEY, '1')
+        onUnlock()
+      }, 1000)
     } else {
       setError(true)
       setValue('')
     }
   }
+
+  if (loading) return <Loader />
 
   return (
     <div className={styles.gate}>
@@ -173,7 +191,7 @@ export default function IctFunction() {
   if (!unlocked) return <Gate onUnlock={() => setUnlocked(true)} />
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${styles.pageEnter}`}>
       <header className={styles.top}>
         <div className={`container ${styles.topInner}`}>
           <img src={vellowLogo} alt="Vellow" className={styles.logo} />
