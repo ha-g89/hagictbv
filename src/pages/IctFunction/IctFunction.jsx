@@ -2,9 +2,16 @@ import { useState } from 'react'
 import styles from './IctFunction.module.css'
 import { software, documentation, DOWNLOAD_BASE } from './releases'
 
-// Hardcoded toegangswachtwoord — pas hier aan.
-const ACCESS_PASSWORD = '3ict-2026'
+// SHA-256-hash van het toegangswachtwoord (het wachtwoord zelf staat niet in de code).
+// Nieuw wachtwoord instellen:
+//   node -e "console.log(require('crypto').createHash('sha256').update('NIEUW-WACHTWOORD').digest('hex'))"
+const ACCESS_HASH = '43198f03fb19b7d9de07dd01493776cc15df0b2922026e3f893a64524df3851a'
 const SESSION_KEY = 'ictfunction-auth'
+
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))
+  return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('')
+}
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString('nl-NL', {
@@ -16,9 +23,9 @@ function Gate({ onUnlock }) {
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault()
-    if (value === ACCESS_PASSWORD) {
+    if ((await sha256(value)) === ACCESS_HASH) {
       sessionStorage.setItem(SESSION_KEY, '1')
       onUnlock()
     } else {
