@@ -88,10 +88,9 @@ function ReleaseCard({ release: r, latest }) {
                   key={s.name}
                   className={`${styles.tile} ${s.obsolete ? styles.tileObsolete : ''}`}
                 >
-                  <span className={styles.tileDot} aria-hidden="true" />
                   <span className={styles.tileName}>{s.name}</span>
                   <span className={styles.tileStatus}>
-                    {s.obsolete ? 'Niet meer ondersteund' : 'Ondersteund'}
+                    {s.obsolete ? 'Obsolete' : 'Ondersteund'}
                   </span>
                 </li>
               ))}

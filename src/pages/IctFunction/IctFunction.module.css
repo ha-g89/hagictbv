@@ -320,12 +320,9 @@
 }
 
 .tile {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  column-gap: 10px;
-  row-gap: 2px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   padding: 12px 14px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
@@ -336,15 +333,6 @@
 .tile:hover {
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow);
-}
-
-.tileDot {
-  grid-row: 1 / span 2;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-accent-subtle);
 }
 
 .tileName {
@@ -372,11 +360,6 @@
 .tileObsolete:hover {
   box-shadow: none;
   border-color: var(--color-border);
-}
-
-.tileObsolete .tileDot {
-  background: var(--color-border-strong);
-  box-shadow: none;
 }
 
 .tileObsolete .tileName {
