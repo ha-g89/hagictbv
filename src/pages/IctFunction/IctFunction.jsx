@@ -87,16 +87,33 @@ function Gate({ onUnlock }) {
 }
 
 function ReleaseCard({ release: r, latest }) {
+  const [open, setOpen] = useState(false)
+
   return (
-    <li className={`${styles.card} ${latest ? styles.cardLatest : ''}`}>
-      <div className={styles.cardHead}>
+    <li className={`${styles.card} ${latest ? styles.cardLatest : ''} ${open ? styles.cardOpen : ''}`}>
+      <button
+        type="button"
+        className={styles.cardHead}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
         <div className={styles.cardVersion}>
           <span className={styles.version}>v{r.version}</span>
           {latest && <span className={styles.badge}>Nieuwste</span>}
         </div>
-        <span className={styles.date}>{formatDate(r.date)}</span>
-      </div>
+        <div className={styles.cardHeadRight}>
+          <span className={styles.date}>{formatDate(r.date)}</span>
+          <svg
+            className={styles.chevron}
+            width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"
+          >
+            <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </button>
 
+      <div className={styles.collapse}>
+        <div className={styles.collapseInner}>
       <div className={styles.cardBody}>
         <ul className={styles.notes}>
           {r.notes.map((n) => <li key={n}>{n}</li>)}
@@ -158,6 +175,8 @@ function ReleaseCard({ release: r, latest }) {
             <path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </a>
+      </div>
+        </div>
       </div>
     </li>
   )

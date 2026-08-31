@@ -299,14 +299,81 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
   padding: 18px 24px;
   background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
+  border: none;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.cardHead:hover {
+  background: oklch(92% 0.014 72);
+}
+
+.cardOpen .cardHead {
+  border-bottom-color: var(--color-border);
 }
 
 .cardLatest .cardHead {
   background: var(--color-accent-subtle);
+}
+
+.cardLatest .cardHead:hover {
+  background: oklch(94.5% 0.045 30);
+}
+
+.cardLatest.cardOpen .cardHead {
   border-bottom-color: oklch(52% 0.22 28 / 0.2);
+}
+
+.cardHeadRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chevron {
+  color: var(--color-text-dim);
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardOpen .chevron {
+  transform: rotate(180deg);
+}
+
+.cardLatest .chevron {
+  color: var(--color-accent);
+}
+
+/* ── Uitklap-animatie ── */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardOpen .collapse {
+  grid-template-rows: 1fr;
+}
+
+.collapseInner {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardOpen .collapseInner {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cardVersion {
